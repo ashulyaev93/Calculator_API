@@ -9,5 +9,5 @@ import java.util.List;
 @Service
 public interface CalculateService {
     int calculate(String inputString);
-    List<Calculator> getLog();//TODO fromDate, toDate
+    List<Calculator> getLog(String fromDate, String toDate);
 }

@@ -23,7 +23,7 @@ public class CalculateLogServiceDataBaseImpl implements CalculateLogServiceDataB
     }
 
     @Override
-    public List<Calculator> getLog() {
-        return Lists.newArrayList(repository.findAll());//TODO
+    public List<Calculator> getLog(String fromDate, String toDate) {
+        return Lists.newArrayList(repository.findAll());
     }
 }

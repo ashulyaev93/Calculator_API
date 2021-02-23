@@ -8,5 +8,5 @@ import java.util.List;
 @Service
 public interface CalculateLogServiceDataBase {
     boolean saveLog(String inputString, float result);
-    List<Calculator> getLog();//TODO fromDate, toDate
+    List<Calculator> getLog(String fromDate, String toDate);
 }
