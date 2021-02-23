@@ -1,7 +1,7 @@
-package simpleCalculator.postfix.infix.postfix;
+package com.example.calculatorapi.services.calculator.parser.postfix;
 
 public class ParsePost {
-    private StackX theStack;
+    private PostfixStackX theStack;
     private String input;
 
     public ParsePost(String s){
@@ -9,14 +9,13 @@ public class ParsePost {
     }
 
     public int doParse(){
-        theStack = new StackX(20);//создание объекта стека
+        theStack = new PostfixStackX(20);//создание объекта стека
         char ch;
         int j;
         int num1, num2, interAns;
 
         for(j = 0; j < input.length(); j++){//для каждого символа
             ch = input.charAt(j);//чтение символа
-            theStack.displayStack("" + ch + " ");//диагностика
             if(ch >= '0' && ch <= '9') {//если это цифра, занести в стек (!в книге кастомный тип int)
                 theStack.push((int) (ch - '0'));//Занести в стек
             }

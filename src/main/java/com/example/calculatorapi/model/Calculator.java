@@ -1,10 +1,11 @@
-package com.example.calculatorapi.models;
+package com.example.calculatorapi.model;
 
 import javax.persistence.*;
+import java.util.Scanner;
 
 @Entity
 @Table(name = "math_expression")
-public class MathExpression {
+public class Calculator {
     @Id
 //    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
@@ -19,11 +20,11 @@ public class MathExpression {
     @Column(name = "result")
     private float result;
 
-    public MathExpression(){
+    public Calculator(){
 
     }
 
-    public MathExpression(int id, String expression, float result){
+    public Calculator(int id, String expression, float result){
         this.id = id;
         this.expression = expression;
 //        this.date = date;
@@ -50,7 +51,7 @@ public class MathExpression {
     public String toString(){
         return expression + " " + result;
     }
-}
+    }
 
 
 

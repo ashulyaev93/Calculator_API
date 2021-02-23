@@ -1,23 +1,20 @@
-package simpleCalculator.postfix.infix.infix;
+package com.example.calculatorapi.services.calculator.parser.infix;
 
 public class InToPost {
-    private StackX theStack;
+    private InfixStackX theStack;
     private String input;
     private String output = "";
-
 
     public InToPost(String in){
         input = in;
         int stackSize = input.length();
-        theStack = new StackX(stackSize);
+        theStack = new InfixStackX(stackSize);
     }
-
 
     public String doTranse() {
 
         for (int j = 0; j < input.length(); j++) {//для каждого символа
             char ch = input.charAt(j);//чтение символа
-            theStack.displayStack("For " + ch + " ");//диагностика
             switch (ch) {
                 case '+':
                 case '-':
@@ -40,13 +37,10 @@ public class InToPost {
         }
 
         while (!theStack.isEmpty()){
-            theStack.displayStack("While ");
             output = output + theStack.pop();
         }
-        theStack.displayStack("End ");
         return output;
     }
-
 
     public void gotOper(char opThis, int prec1) {
 
@@ -67,7 +61,6 @@ public class InToPost {
         }
         theStack.push(opThis);
     }
-
 
     public void gotParen(char ch) {
         while(!theStack.isEmpty()) {
