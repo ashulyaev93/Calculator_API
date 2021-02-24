@@ -8,5 +8,6 @@ import java.util.List;
 @Service
 public interface CalculateService {
     int calculate(String inputString);
-    List<Calculator> showLog(String fromDate, String toDate);
+    List<Calculator> showLogByDate(String fromDate, String toDate);
+    List<Calculator> showLogByExpression(String expression);
 }

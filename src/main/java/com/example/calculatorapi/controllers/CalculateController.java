@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 public class CalculateController {
@@ -22,9 +23,17 @@ public class CalculateController {
         return result;
     }
 
-    @GetMapping("/historycalc")
-    public List<Calculator> showLog(@RequestBody Calculator logger) {
-        List<Calculator> date = service.showLog(logger.getFromDate(), logger.getToDate());
-        return date;
+    @PostMapping("/history/date")
+    @ResponseBody
+    public List<Calculator> showLogByDate(@RequestBody Map<String,String> param) {
+        List<Calculator> dataDate = service.showLogByDate(param.get("fromDate"), param.get("toDate"));
+        return dataDate;
+    }
+
+    @PostMapping("/history/expression")
+    @ResponseBody
+    public List<Calculator> showLogByExpression(@RequestBody Map<String,String> params) {
+        List<Calculator> dataExpression = service.showLogByExpression(params.get("expression"));
+        return dataExpression;
     }
 }

@@ -18,4 +18,7 @@ public interface CalculateLogRepository extends CrudRepository<Calculator, Long>
 
     @Query(nativeQuery = true, value = "select * from history_calculation where date >= ?1 and date <= ?2")
     List<Calculator> getLogByDateInterval(String fromDate, String toDate);
+
+    @Query(nativeQuery = true, value = "select * from history_calculation where expression = ?1")
+    List<Calculator> getLogByExpression(String expression);
 }

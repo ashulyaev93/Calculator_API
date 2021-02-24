@@ -29,14 +29,17 @@ public class CalculateServiceImpl implements CalculateService {
     @Override
     public int calculate(String inputString) {
         int result = this.calculator.calculate(inputString);
-
         saveLog(inputString, result);
-
         return result;
     }
 
     @Override
-    public List<com.example.calculatorapi.model.Calculator> showLog(String fromDate, String toDate) {
-        return this.logger.showLog(fromDate, toDate);
+    public List<com.example.calculatorapi.model.Calculator> showLogByDate(String fromDate, String toDate) {
+        return this.logger.showLogByDate(fromDate, toDate);
+    }
+
+    @Override
+    public List<com.example.calculatorapi.model.Calculator> showLogByExpression(String expression) {
+        return this.logger.showLogByExpression(expression);
     }
 }
