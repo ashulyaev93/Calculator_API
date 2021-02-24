@@ -1,6 +1,7 @@
 package com.example.calculatorapi.model;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 
 @Entity
 @Table(name = "history_calculation")
@@ -19,15 +20,23 @@ public class Calculator {
     @Column(name = "date")
     private String date;
 
+    @Transient
+    private String fromDate;
+
+    @Transient
+    private String toDate;
+
     public Calculator() {
 
     }
 
-    public Calculator(int id, String expression, float result, String date) {
+    public Calculator(int id, String expression, float result, String date, String fromDate, String toDate) {
         this.id = id;
         this.expression = expression;
         this.result = result;
         this.date = date;
+        this.fromDate = fromDate;
+        this.toDate = toDate;
     }
 
     public void setId(int id) {
@@ -60,6 +69,22 @@ public class Calculator {
 
     public String getDate() {
         return date;
+    }
+
+    public void setFromDate(String fromDate) {
+        this.fromDate = fromDate;
+    }
+
+    public String getFromDate() {
+        return fromDate;
+    }
+
+    public void setToDate(String toDate) {
+        this.toDate = toDate;
+    }
+
+    public String getToDate() {
+        return toDate;
     }
 }
 

@@ -24,6 +24,6 @@ public class CalculateLogServiceDataBaseImpl implements CalculateLogServiceDataB
 
     @Override
     public List<Calculator> showLog(String fromDate, String toDate) {
-        return Lists.newArrayList(repository.findAll());
+        return Lists.newArrayList(repository.getLogByDateInterval(fromDate, toDate));
     }
 }

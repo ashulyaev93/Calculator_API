@@ -22,8 +22,9 @@ public class CalculateController {
         return result;
     }
 
-    @GetMapping("/calculator")
-    public List<Calculator> showLog() {
-        return service.showLog("2021-02-23", "2021-02-23");
+    @GetMapping("/historycalc")
+    public List<Calculator> showLog(@RequestBody Calculator logger) {
+        List<Calculator> date = service.showLog(logger.getFromDate(), logger.getToDate());
+        return date;
     }
 }
