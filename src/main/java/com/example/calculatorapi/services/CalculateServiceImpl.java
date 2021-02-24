@@ -1,4 +1,5 @@
 package com.example.calculatorapi.services;
+
 import com.example.calculatorapi.repository.CalculateLogRepository;
 import com.example.calculatorapi.services.calculator.Calculator;
 import com.example.calculatorapi.services.calculator.CalculatorImpl;
@@ -18,17 +19,24 @@ public class CalculateServiceImpl implements CalculateService {
     @Autowired
     public CalculateServiceImpl(CalculateLogRepository clr){
         this.calculator = new CalculatorImpl();
-
         this.logger = new CalculateLogServiceDataBaseImpl(clr);
+    }
+
+    public void saveLog(String expression, float result){
+        this.logger.saveLog(expression, result);
     }
 
     @Override
     public int calculate(String inputString) {
-        return this.calculator.calculate(inputString);
+        int result = this.calculator.calculate(inputString);
+
+        saveLog(inputString, result);
+
+        return result;
     }
 
     @Override
-    public List<com.example.calculatorapi.model.Calculator> getLog() {
-        return this.logger.getLog();
+    public List<com.example.calculatorapi.model.Calculator> showLog(String fromDate, String toDate) {
+        return this.logger.showLog(fromDate, toDate);
     }
 }

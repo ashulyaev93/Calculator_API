@@ -18,12 +18,12 @@ public class CalculateLogServiceDataBaseImpl implements CalculateLogServiceDataB
     }
 
     @Override
-    public boolean saveLog(String inputString, float result) {
-        return true;
+    public void saveLog(String expression, float result) {
+        repository.saveLog(expression, result);
     }
 
     @Override
-    public List<Calculator> getLog(String fromDate, String toDate) {
+    public List<Calculator> showLog(String fromDate, String toDate) {
         return Lists.newArrayList(repository.findAll());
     }
 }

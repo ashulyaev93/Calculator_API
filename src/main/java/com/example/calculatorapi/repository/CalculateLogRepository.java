@@ -12,6 +12,6 @@ import javax.transaction.Transactional;
 public interface CalculateLogRepository extends CrudRepository<Calculator, Long>{
     @Transactional
     @Modifying
-    @Query(nativeQuery = true, value = "insert into math_expression values (?1,?2)")
-    int saveLine(String expression, float result);
+    @Query(nativeQuery = true, value = "insert into history_calculation values (null, ?1,?2, current_timestamp)")
+    void saveLog(String expression, float result);
 }

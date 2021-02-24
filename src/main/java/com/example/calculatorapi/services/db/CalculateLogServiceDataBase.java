@@ -7,6 +7,6 @@ import java.util.List;
 
 @Service
 public interface CalculateLogServiceDataBase {
-    boolean saveLog(String inputString, float result);
-    List<Calculator> getLog(String fromDate, String toDate);
+    void saveLog(String expression, float result);
+    List<Calculator> showLog(String fromDate, String toDate);
 }
