@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class InToPost {
     private StackX theStack;
     private String input;
-    private String output = "";
+    //    private String output = "";
     private ArrayList<String> output2 = new ArrayList<>();
 
 
@@ -26,31 +26,46 @@ public class InToPost {
             switch (ch) {
                 case '+':
                 case '-':
+                    if(temp != ""){
+                        output2.add(temp);
+                        temp = "";
+                    }
                     gotOper(ch, 1);
                     break;
                 case '*':
                 case '/':
+                    if(temp != ""){
+                        output2.add(temp);
+                        temp = "";
+                    }
                     gotOper(ch, 2);
                     break;
                 case '(':
+                    if(temp != ""){
+                        output2.add(temp);
+                        temp = "";
+                    }
                     theStack.push(ch);
                     break;
                 case ')':
+                    if(temp != ""){
+                        output2.add(temp);
+                        temp = "";
+                    }
                     gotParen(ch);
                     break;
                 default:
                     temp = temp + ch;
                     isNumber = true;
+                    if(temp != ""){
+                        output2.add(temp);
+                        temp = "";
+                    }
+                    System.out.println(temp);
                     break;
             }
-            if(!isNumber){
-                output2.add(temp);
-                temp = "";
-            }
+
         }
-        // Добавляем в массив последнее число
-        output2.add(temp);
-        temp = "";
 
         System.out.println(output2.toString());
 
@@ -67,19 +82,19 @@ public class InToPost {
     public void gotOper(char opThis, int prec1) {
 
         while(!theStack.isEmpty()) {
-              char opTop = theStack.pop();
-              if (opTop == '(') {
-                  theStack.push(opTop);
-                  break;
-              } else {
-                  int prec2;
-                  if (opTop == '+' || opTop == '-') prec2 = 1;
-                  else prec2 = 2;
-                  if (prec2 < prec1) {
-                      theStack.push(opTop);
-                      break;
-                  } else output = output + opTop;
-              }
+            char opTop = theStack.pop();
+            if (opTop == '(') {
+                theStack.push(opTop);
+                break;
+            } else {
+                int prec2;
+                if (opTop == '+' || opTop == '-') prec2 = 1;
+                else prec2 = 2;
+                if (prec2 < prec1) {
+                    theStack.push(opTop);
+                    break;
+                } else output2.add(Character.toString(opTop));
+            }
         }
         theStack.push(opThis);
     }
@@ -89,7 +104,7 @@ public class InToPost {
         while(!theStack.isEmpty()) {
             char chx = theStack.pop();
             if(chx == '(') break;
-            else output = output + chx;
+            else output2.add(Character.toString(chx));
         }
     }
 }
