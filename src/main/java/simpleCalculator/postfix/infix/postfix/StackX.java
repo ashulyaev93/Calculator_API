@@ -2,24 +2,24 @@ package simpleCalculator.postfix.infix.postfix;
 
 public class StackX {
     private int maxSize;
-    private int[] stackArray;
+    private float[] stackArray;
     private int top;
 
     public StackX(int size){
         maxSize = size;
-        stackArray = new int[maxSize];
+        stackArray = new float[maxSize];
         top = -1;
     }
 
-    public void push(int j){ //размещение элемента на вершине стека;
+    public void push(float j){ //размещение элемента на вершине стека;
         stackArray[++top] = j;
     }
 
-    public int pop(){ //извлечение элемента с вершины стека;
+    public float pop(){ //извлечение элемента с вершины стека;
         return stackArray[top--];
     }
 
-    public int peek(){ //чтение элемента на вершине стека;
+    public float peek(){ //чтение элемента на вершине стека;
         return stackArray[top];
     }
 
@@ -31,11 +31,11 @@ public class StackX {
         return(top == maxSize - 1);
     }
 
-    private int size() { //текущий размер стека;
+    private float size() { //текущий размер стека;
         return top + 1;
     }
 
-    public int peekN(int n){ //чтение элемента с индексом n
+    public float peekN(int n){ //чтение элемента с индексом n
         return stackArray[n];
     }
 

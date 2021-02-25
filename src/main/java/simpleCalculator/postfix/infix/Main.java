@@ -9,7 +9,7 @@ public class Main {
         String str = math.nextLine();
 
         Calculator calculator = new Calculator();
-        int result = calculator.calculate(str);
+        float result = calculator.calculate(str);
         System.out.println(result);
     }
 }

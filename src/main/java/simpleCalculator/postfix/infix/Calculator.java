@@ -4,11 +4,12 @@ import simpleCalculator.postfix.infix.infix.InfixApp;
 import simpleCalculator.postfix.infix.postfix.PostfixApp;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class Calculator {
-    public int calculate(String str) throws IOException {
-        String infixStr = InfixApp.trans(str);
-        int result = PostfixApp.parser(infixStr);
+    public float calculate(String str) throws IOException {
+        ArrayList<String> infixStr = InfixApp.trans(str);
+        float result = PostfixApp.parser(infixStr);
         return result;
     }
 }

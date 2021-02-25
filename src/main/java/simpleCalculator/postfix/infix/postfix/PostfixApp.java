@@ -3,11 +3,12 @@ package simpleCalculator.postfix.infix.postfix;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayList;
 
 public class PostfixApp {
 
-    public static int parser(String str) throws IOException {
-        int output;
+    public static float parser(ArrayList<String> str) throws IOException {
+        float output;
 
             ParsePost aParser = new ParsePost(str);
             output = aParser.doParse();

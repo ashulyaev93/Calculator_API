@@ -1,9 +1,12 @@
 package simpleCalculator.postfix.infix.infix;
 
+import java.util.ArrayList;
+
 public class InToPost {
     private StackX theStack;
     private String input;
     private String output = "";
+    private ArrayList<String> output2 = new ArrayList<>();
 
 
     public InToPost(String in){
@@ -13,11 +16,13 @@ public class InToPost {
     }
 
 
-    public String doTranse() {
+    public ArrayList<String> doTranse() {
 
+        String temp = "";
         for (int j = 0; j < input.length(); j++) {//для каждого символа
             char ch = input.charAt(j);//чтение символа
             theStack.displayStack("For " + ch + " ");//диагностика
+            boolean isNumber = false;
             switch (ch) {
                 case '+':
                 case '-':
@@ -34,17 +39,28 @@ public class InToPost {
                     gotParen(ch);
                     break;
                 default:
-                    output = output + ch;
+                    temp = temp + ch;
+                    isNumber = true;
                     break;
             }
+            if(!isNumber){
+                output2.add(temp);
+                temp = "";
+            }
         }
+        // Добавляем в массив последнее число
+        output2.add(temp);
+        temp = "";
+
+        System.out.println(output2.toString());
 
         while (!theStack.isEmpty()){
             theStack.displayStack("While ");
-            output = output + theStack.pop();
+            output2.add(String.valueOf(theStack.pop()));
+            //output = output + theStack.pop();
         }
         theStack.displayStack("End ");
-        return output;
+        return output2;
     }
 
 
